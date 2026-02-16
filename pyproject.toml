@@ -1,0 +1,42 @@
+[project]
+name = "mcp-connection-tools"
+version = "0.1.0"
+description = "MCP server registry search and integration management tools for AI agents"
+readme = "README.md"
+license = {text = "MIT"}
+requires-python = ">=3.13"
+authors = [{ name = "NimbleBrain Inc", email = "hello@nimblebrain.ai" }]
+dependencies = [
+    "fastmcp>=2.14.0",
+    "pydantic>=2.0.0",
+    "httpx>=0.28.0",
+    "uvicorn>=0.34.0",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/mcp_connection_tools"]
+
+[tool.ruff]
+target-version = "py313"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "W", "F", "I", "B", "C4", "UP"]
+ignore = ["E501", "B008"]
+
+[dependency-groups]
+dev = [
+    "mcp>=1.3.2",
+    "pytest>=8.4.2",
+    "pytest-asyncio>=0.24.0",
+    "pytest-cov>=6.0.0",
+    "ruff>=0.13.1",
+]
+
+[project.urls]
+Homepage = "https://github.com/NimbleBrainInc/mcp-connection-tools"
+Repository = "https://github.com/NimbleBrainInc/mcp-connection-tools.git"

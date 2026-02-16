@@ -1,0 +1,68 @@
+{
+  "manifest_version": "0.4",
+  "name": "@nimblebraininc/connection-tools",
+  "version": "0.1.0",
+  "description": "MCP server registry search and integration management tools for AI agents",
+  "author": {
+    "name": "NimbleBrain Inc",
+    "email": "hello@nimblebrain.ai"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/NimbleBrainInc/mcp-connection-tools"
+  },
+  "server": {
+    "type": "python",
+    "entry_point": "mcp_connection_tools.server",
+    "mcp_config": {
+      "command": "python",
+      "args": ["-m", "mcp_connection_tools.server"],
+      "env": {
+        "REGISTRY_URL": "${user_config.registry_url}",
+        "INTEGRATION_MANAGER_URL": "${user_config.integration_manager_url}",
+        "TENANT_ID": "${user_config.tenant_id}"
+      }
+    }
+  },
+  "user_config": {
+    "registry_url": {
+      "type": "string",
+      "title": "Registry URL",
+      "description": "mpak registry URL",
+      "required": false
+    },
+    "integration_manager_url": {
+      "type": "string",
+      "title": "Integration Manager URL",
+      "description": "Integration Manager service URL (required for install/uninstall)",
+      "required": false
+    },
+    "tenant_id": {
+      "type": "string",
+      "title": "Tenant ID",
+      "description": "Tenant identifier",
+      "required": false
+    }
+  },
+  "tools": [
+    { "name": "registry_search", "description": "Search the mpak registry for available MCP servers" },
+    { "name": "registry_resolve", "description": "Get full metadata for a specific package" },
+    { "name": "integration_install", "description": "Install an MCP server from the registry" },
+    { "name": "integration_uninstall", "description": "Remove an installed MCP server" },
+    { "name": "integration_list", "description": "List all installed integrations" },
+    { "name": "integration_status", "description": "Get status of a specific integration" },
+    { "name": "integration_restart", "description": "Restart a connected MCP server" }
+  ],
+  "_meta": {
+    "org.mpaktrust": {
+      "mtf_version": "0.1",
+      "permissions": {
+        "filesystem": "none",
+        "network": "outbound",
+        "environment": "read",
+        "subprocess": "none",
+        "native": "none"
+      }
+    }
+  }
+}
