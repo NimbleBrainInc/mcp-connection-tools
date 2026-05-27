@@ -1,3 +1,10 @@
+> [!WARNING]
+> **This repository is archived and no longer maintained.**
+>
+> This MCP server has been removed from the [mpak registry](https://mpak.dev).
+
+---
+
 # @nimblebraininc/connection-tools
 
 MCP server registry search and integration management tools for AI agents.
